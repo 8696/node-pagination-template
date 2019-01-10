@@ -33,7 +33,10 @@ module.exports = function (options) {
                     let page = i;
 
 
+
                     return '<li><a href="{link}">{page}</a></li>'
+                        .replace(/{link}/, options.link_url.replace(/{page}/, page))
+                        .replace(/{page}/, page);
 
                 }());
             }
