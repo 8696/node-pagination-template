@@ -42,8 +42,8 @@ module.exports = function (options) {
         completeData = function () {
 
             data.last_page = Math.ceil(options.dataTotal / options.perPage);
-            data.dataTotal = options.dataTotal;
-            data.currentPage = options.currentPage;
+            data.dataTotal = Number.parseInt(options.dataTotal);
+            data.currentPage = Number.parseInt(options.currentPage);
 
             // console.log(`总页数${data.last_page}  当前页${data.currentPage}`);
         },
