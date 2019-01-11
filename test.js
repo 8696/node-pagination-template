@@ -2,21 +2,22 @@ const fs = require('fs');
 const paginationTemplate = require('./main');
 
 let a = paginationTemplate({
-    currentPage: 2,
-    dataTotal: 6,
+    currentPage: 7,
+    dataTotal: 13,
     perPage: 1,
     // linkUrl: 'http://127.0.0.1/p/{page}?page={page}',
-    linkUrl: '/get/{page}?page={page}',
-    linkAppendQuery: {
+    linkUrl: '/get/{page}?page={page}&',
+    linkQuery: {
         username: 'long',
         p: '{page}'
     },
     btnText: {
-        prev: '<',
-        next: '>',
+        prev: '<<',
+        next: '>>',
         ellipsis: '<i></i>',
-        link: '第{page}页'
-    }
+        link: '{page}--'
+    },
+
 });
 fs.writeFileSync('./test.html', a);
 

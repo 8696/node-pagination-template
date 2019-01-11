@@ -155,7 +155,7 @@ module.exports = function (options) {
                                 .replace(/{page}/, item.page);
                     }
 
-                }()) + '\r\n';
+                }());
             });
 
 
@@ -167,7 +167,7 @@ module.exports = function (options) {
                 return (`<li><a href="{link}">${btnText.prev}</a></li>`)
                     .replace(/{link}/, options.linkUrl.replace(/{page}/g, data.currentPage - 1));
 
-            }()) + '\r\n' + template;
+            }()) + template;
 
 
             // 下一页 禁用 or 跳转
@@ -177,9 +177,9 @@ module.exports = function (options) {
                 }
                 return (`<li><a href="{link}">${btnText.next}</a></li>`)
                     .replace(/{link}/, options.linkUrl.replace(/{page}/g, data.currentPage + 1));
-            }()) + '\r\n';
+            }());
 
-            template = `\r\n\r\n<ul class="pagination">${template}</ul>\r\n\r\n` + '<meta charset="UTF-8"><link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">';
+            template = `<!-- https://github.com/8696/node-pagination-template --><ul class="pagination">${template}</ul>` + '<meta charset="UTF-8"><link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">';
         },
         init = function () {
             check();
