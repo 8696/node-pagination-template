@@ -114,6 +114,8 @@ module.exports = function (options) {
         },
         completeTemplate = function () {
             !options.btnText && (options.btnText = {});
+            !options.linkAppendQuery && (options.linkAppendQuery = {});
+
             let btnText = Object.assign({
                 prev: '<',
                 next: '>',
@@ -123,8 +125,15 @@ module.exports = function (options) {
             for (let key in btnText) {
                 btnText[key] = encode(btnText[key]);
             }
+            // 解析 query
 
-            console.log(options.btnText);
+            let {url, query} = queryString.parseUrl(options.linkUrl);
+            query = Object.assign(query, options.linkAppendQuery);
+            query = decodeURI(queryString.stringify(query));
+            if (query) {
+                options.linkUrl = url + '?' + query;
+            }
+            console.log(options.linkUrl);
 
             compute().forEach(function (item) {
                 template += (function () {

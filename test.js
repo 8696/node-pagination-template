@@ -5,9 +5,11 @@ let a = paginationTemplate({
     currentPage: 2,
     dataTotal: 6,
     perPage: 1,
-    linkUrl: 'http://127.0.0.1/p/{page}?page={page}&a={page}',
+    // linkUrl: 'http://127.0.0.1/p/{page}?page={page}',
+    linkUrl: '/get/{page}?page={page}',
     linkAppendQuery: {
-        username: 'long'
+        username: 'long',
+        p: '{page}'
     },
     btnText: {
         prev: '<',
