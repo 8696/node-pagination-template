@@ -1,7 +1,7 @@
 {
   "name": "node-pagination-template",
   "version": "1.0.0",
-  "description": "nodejs分页模版生成器",
+  "description": "Pagination template for node.js",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/8696/node-pagination-template.git"
   },
-  "author": "",
+  "author": "long<204084802@qq.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/8696/node-pagination-template/issues"
@@ -18,5 +18,9 @@
   "homepage": "https://github.com/8696/node-pagination-template#readme",
   "dependencies": {
     "query-string": "^6.2.0"
-  }
+  },
+  "keywords": [
+    "node-pagination",
+    "node-template"
+  ]
 }
