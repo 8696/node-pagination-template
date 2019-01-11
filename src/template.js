@@ -179,7 +179,7 @@ module.exports = function (options) {
                     .replace(/{link}/, options.linkUrl.replace(/{page}/g, data.currentPage + 1));
             }());
 
-            // template = `<ul class="pagination">${template}</ul>` + '<meta charset="UTF-8"><link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">';
+            //template = `<ul class="pagination">${template}</ul>` + '<meta charset="UTF-8"><link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">';
             template = `<ul class="pagination">${template}</ul>`;
         },
         init = function () {
