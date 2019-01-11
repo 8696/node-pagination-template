@@ -42,10 +42,13 @@
         <li><a href="http://127.0.0.1/user/list/7?page=7">&gt;</a></li>
     </ul>
     // add bootstrap css
-    
-    ![Imagetext](/1.jpg)
-    
-        
+```
+![图片介绍](https://raw.githubusercontent.com/8696/node-pagination-template/master/1.jpg)
+
+
+
+```javascript
+      
     // other options
     
     let text2 = paginationTemplate({
@@ -81,6 +84,5 @@
         <li><a href="/user/list/20?page=20&page2=20&username=long">第20页</a></li>
         <li><a href="/user/list/11?page=11&page2=11&username=long">下一页</a></li>
     </ul>
-
 ```
-
+![图片介绍](https://raw.githubusercontent.com/8696/node-pagination-template/master/2.jpg)
