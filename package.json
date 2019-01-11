@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/8696/node-pagination-template/issues"
   },
-  "homepage": "https://github.com/8696/node-pagination-template#readme"
+  "homepage": "https://github.com/8696/node-pagination-template#readme",
+  "dependencies": {
+    "query-string": "^6.2.0"
+  }
 }

@@ -1,3 +1,4 @@
+const queryString = require('query-string');
 module.exports = function (options) {
     let data = {},
         template = '',
@@ -10,6 +11,9 @@ module.exports = function (options) {
             s = s.replace(/>/g, '&gt;');
             s = s.replace(/ /g, '&nbsp;');
             return s;
+        },
+        query = function () {
+
         },
 
         check = function () {
