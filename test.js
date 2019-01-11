@@ -1,7 +1,7 @@
 const fs = require('fs');
 const paginationTemplate = require('./main');
 
-let a = paginationTemplate({
+let text = paginationTemplate({
     currentPage: 7,
     dataTotal: 13,
     perPage: 1,
@@ -14,10 +14,10 @@ let a = paginationTemplate({
     btnText: {
         prev: '<<',
         next: '>>',
-        ellipsis: '<i></i>',
-        link: '{page}--'
+        ellipsis: '...',
+        link: '第{page}页'
     },
 
 });
-fs.writeFileSync('./test.html', a);
+fs.writeFileSync('./test.html', text);
 
