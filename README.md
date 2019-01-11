@@ -79,5 +79,10 @@
         <li><a href="/user/list/20?page=20&page2=20&username=long">第20页</a></li>
         <li><a href="/user/list/11?page=11&page2=11&username=long">下一页</a></li>
     </ul>
+    // add bootstrap css
 ```
 ![图片介绍](https://raw.githubusercontent.com/8696/node-pagination-template/master/2.jpg)
+
+
+
+
