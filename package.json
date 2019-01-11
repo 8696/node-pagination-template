@@ -1,6 +1,6 @@
 {
   "name": "node-pagination-template",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Pagination template for node.js",
   "main": "main.js",
   "scripts": {
