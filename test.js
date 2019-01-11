@@ -2,14 +2,14 @@ const fs = require('fs');
 const paginationTemplate = require('./main');
 
 let a = paginationTemplate({
-    currentPage: 101,
-    dataTotal: 200001,
-    perPage: 2000,
-    linkUrl: 'http://127.0.0.1/p/{page}',
-    btnOption: {
-        prev: '上一页',
-        next: '下一页',
-        ellipsis: '---',
+    currentPage: 55,
+    dataTotal: 100,
+    perPage: 1,
+    linkUrl: 'http://127.0.0.1/p/{page}?page={page}&a={page}',
+    btnText: {
+        prev: '<',
+        next: '>',
+        ellipsis: '<i></i>',
         link: '第{page}页'
     }
 });

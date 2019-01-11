@@ -1,6 +1,17 @@
 module.exports = function (options) {
     let data = {},
         template = '',
+
+        encode = function (str) {
+            let s = '';
+            if (str.length === 0) return '';
+            s = str.replace(/&/g, '&amp;');
+            s = s.replace(/</g, '&lt;');
+            s = s.replace(/>/g, '&gt;');
+            s = s.replace(/ /g, '&nbsp;');
+            return s;
+        },
+
         check = function () {
             if (Object.prototype.toString.call(options) !== '[object Object]') {
                 throw new Error('options 应为一个对象');
@@ -19,6 +30,9 @@ module.exports = function (options) {
             }
             if (Math.ceil(options.dataTotal / options.perPage) < options.currentPage) {
                 throw new Error(`options.currentPage 不能大于总页数，总页数为${Math.ceil(options.dataTotal / options.perPage)}`);
+            }
+            if (options.btnText && Object.prototype.toString.call(options.btnText) !== '[object Object]') {
+                throw new Error('options.btnText 应为一个对象');
             }
         },
         completeData = function () {
@@ -95,18 +109,39 @@ module.exports = function (options) {
             return arr;
         },
         completeTemplate = function () {
+            !options.btnText && (options.btnText = {});
+            let btnText = Object.assign({
+                prev: '<',
+                next: '>',
+                ellipsis: '...',
+                link: '{page}'
+            }, options.btnText);
+            for (let key in btnText) {
+                btnText[key] = encode(btnText[key]);
+            }
+
+            console.log(options.btnText);
 
             compute().forEach(function (item) {
                 template += (function () {
 
+
                     switch (item.type) {
                         case 'link':
+                            // 替换文本
+                            let text = btnText.link.replace(/{page}/, item.page);
+
                             return '<li><a href="{link}">{page}</a></li>'
-                                .replace(/{link}/, options.linkUrl.replace(/{page}/, item.page))
-                                .replace(/{page}/, item.page);
+                                .replace(/{link}/, options.linkUrl.replace(/{page}/g, item.page))
+                                .replace(/{page}/g, text);
                         case 'ellipsis':
-                            return '<li class="disabled"><span>...</span></li>';
+
+                            item.page = btnText.ellipsis.replace(/{page}/, item.page);
+
+                            return '<li class="disabled"><span>' + item.page + '</span></li>';
                         case 'active':
+                            item.page = btnText.link.replace(/{page}/, item.page);
+
                             return '<li class="active"><span>{page}</span></li>'
                                 .replace(/{page}/, item.page);
                     }
@@ -115,27 +150,27 @@ module.exports = function (options) {
             });
 
 
-            // 第一页 禁用 or 跳转
+            // 上一页 禁用 or 跳转
             template = (function () {
                 if (data.currentPage === 1) {
-                    return '<li class="disabled"><span>&laquo;</span></li>';
+                    return `<li class="disabled"><span>${btnText.prev}</span></li>`;
                 }
-                return '<li><a href="{link}">&laquo;</a></li>'
-                    .replace(/{link}/, options.linkUrl.replace(/{page}/, data.currentPage - 1));
+                return (`<li><a href="{link}">${btnText.prev}</a></li>`)
+                    .replace(/{link}/, options.linkUrl.replace(/{page}/g, data.currentPage - 1));
 
             }()) + template;
 
 
-            // 尾页 禁用 or 跳转
+            // 下一页 禁用 or 跳转
             template += (function () {
                 if (data.currentPage === data.last_page) {
-                    return '<li class="disabled"><span>&raquo;</span></li>';
+                    return `<li class="disabled"><span>${btnText.next}</span></li>`;
                 }
-                return '<li><a href="{link}">&raquo;</a></li>'
-                    .replace(/{link}/, options.linkUrl.replace(/{page}/, data.currentPage + 1));
+                return (`<li><a href="{link}">${btnText.next}</a></li>`)
+                    .replace(/{link}/, options.linkUrl.replace(/{page}/g, data.currentPage + 1));
             }());
 
-            template = '<ul class="pagination">' + template + '</ul>' + '<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">';
+            template = `<ul class="pagination">${template}</ul>` + '<meta charset="UTF-8"><link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">';
         },
         init = function () {
             check();
