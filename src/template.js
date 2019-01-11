@@ -38,20 +38,20 @@ module.exports = function (options) {
                     type = i === data.current_page ? 'active' : 'link';
                 if ([1, 2].includes(page)) {
                     arr.push({
-                        type: type,
-                        page: page
+                        type,
+                        page
                     });
                 } else if ([length - 1, length - 2].includes(page)) {
                     arr.push({
-                        type: type,
-                        page: page
+                        type,
+                        page
                     });
                 } else if (data.last_page < 12) {
                     // 总页数在11页以下
                     console.log('总页数在11页以下');
                     arr.push({
-                        type: type,
-                        page: page
+                        type,
+                        page
                     });
                 } else if (data.last_page >= 12) {
                     let s = 7;
@@ -59,20 +59,20 @@ module.exports = function (options) {
                     // 总页数在11页以上
                     if (data.current_page <= s && page <= s) {
                         arr.push({
-                            type: type,
-                            page: page
+                            type,
+                            page
                         });
                     } else if (data.current_page >= length - s && page >= length - s) {
                         arr.push({
-                            type: type,
-                            page: page
+                            type,
+                            page
                         });
                     } else {
                         let currentPage = data.current_page;
                         if (page > currentPage - 3 && page < currentPage + 3) {
                             arr.push({
-                                type: type,
-                                page: page
+                                type,
+                                page
                             });
                         } else {
                             if (page === 3) {
@@ -115,7 +115,7 @@ module.exports = function (options) {
             });
 
 
-            // 判断第一页 禁用 or 跳转
+            // 第一页 禁用 or 跳转
             template = (function () {
                 if (data.current_page === 1) {
                     return '<li class="disabled"><span>&laquo;</span></li>';
@@ -126,7 +126,7 @@ module.exports = function (options) {
             }()) + template;
 
 
-            // 判断尾页 禁用 or 跳转
+            // 尾页 禁用 or 跳转
             template += (function () {
                 if (data.current_page === data.last_page) {
                     return '<li class="disabled"><span>&raquo;</span></li>';
