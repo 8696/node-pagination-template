@@ -12,17 +12,14 @@
 #### 使用
 
 ##### nodejs
+        simple
 ```javascript
-
     const paginationTemplate = require('node-pagination-template');
-    
-    // simple
-    
     let text = paginationTemplate({
-        dataTotal: 20,                          // 数据总条数
-        perPage: 1,                             // 每页显示条数
-        currentPage: 6,                         // 当前页码
-        linkUrl: 'http://127.0.0.1/user/list/{page}?page={page}',     // url {page} 将会被替换成实际页码
+        dataTotal: 20,                 // 数据总条数
+        perPage: 1,                    // 每页显示条数
+        currentPage: 6,                // 当前页码
+        linkUrl: 'http://127.0.0.1/user/list/{page}?page={page}', // url {page} 将会被替换成实际页码
     });
     
     // complete
@@ -46,21 +43,19 @@
 ![图片介绍](https://raw.githubusercontent.com/8696/node-pagination-template/master/1.jpg)
 
 
-
+        other options
+        
 ```javascript
-      
-    // other options
-    
     let text2 = paginationTemplate({
-        dataTotal: 20,                          // 数据总条数
-        perPage: 1,                             // 每页显示条数
-        currentPage: 10,                         // 当前页码
-        linkUrl: '/user/list/{page}?page={page}',     // url {page} 将会被替换成实际页码
-        linkQuery: {                            // 可选 | 在地址后面拼接 query string
+        dataTotal: 20,               // 数据总条数
+        perPage: 1,                  // 每页显示条数
+        currentPage: 10,             // 当前页码
+        linkUrl: '/user/list/{page}?page={page}',  // url {page} 将会被替换成实际页码
+        linkQuery: {                 // 可选 | 在地址后面拼接 query string
             username: 'long',
             page2: '{page}'
         },
-        btnText: {                              // 可选 | 更改分页按钮文本
+        btnText: {                   // 可选 | 更改分页按钮文本
             prev: '上一页',
             next: '下一页',
             ellipsis: '...',
