@@ -2,16 +2,15 @@
 
 #### 项目介绍
 
-快速生成通用html分页模版
+- nodejs应用中生成通用html分页模版
 
 #### 安装
 
-1. (c)npm install node-pagination-template -D
+- (c)npm install node-pagination-template -D
 
 
 #### 使用
 
-##### nodejs
         simple
 ```javascript
     const paginationTemplate = require('node-pagination-template');
