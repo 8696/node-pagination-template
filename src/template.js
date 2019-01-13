@@ -2,7 +2,7 @@ const queryString = require('query-string');
 module.exports = function (options) {
     let data = {},
         template = '',
-
+        isEmpty = false,
         encode = function (str) {
             let s = '';
             if (str.length === 0) return '';
@@ -29,15 +29,17 @@ module.exports = function (options) {
             if (!options.hasOwnProperty('linkUrl')) {
                 throw new Error('options.linkUrl 不存在，并且类型应为String');
             }
-            if (Math.ceil(options.dataTotal / options.perPage) < options.currentPage) {
-                throw new Error(`options.currentPage 不能大于总页数，总页数为${Math.ceil(options.dataTotal / options.perPage)}`);
-            }
             if (options.btnText && Object.prototype.toString.call(options.btnText) !== '[object Object]') {
                 throw new Error('options.btnText 应为一个对象');
             }
             if (options.linkQuery && Object.prototype.toString.call(options.linkQuery) !== '[object Object]') {
                 throw new Error('options.linkQuery 应为一个对象');
             }
+            if (Number.parseInt(options.currentPage) > Math.ceil(options.dataTotal / options.perPage)) {
+                // 超出总页数
+                isEmpty = true;
+            }
+
         },
         completeData = function () {
 
@@ -45,7 +47,8 @@ module.exports = function (options) {
             data.dataTotal = Number.parseInt(options.dataTotal);
             data.currentPage = Number.parseInt(options.currentPage);
 
-            // console.log(`总页数${data.last_page}  当前页${data.currentPage}`);
+
+            console.log(`总页数${data.last_page}  当前页${data.currentPage}`);
         },
         compute = function () {
 
@@ -191,7 +194,9 @@ module.exports = function (options) {
 
     init();
 
-    return template;
+    return isEmpty ?
+        '<ul class="pagination"><!-- Page number greater than total number of pages --></ul>'
+        : template;
 };
 
 
