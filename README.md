@@ -11,8 +11,9 @@
 
 #### 使用
 
-        simple
 ```javascript
+    // *** 001
+    
     const paginationTemplate = require('node-pagination-template');
     let text = paginationTemplate({
         dataTotal: 20,                 // 数据总条数
@@ -39,12 +40,16 @@
     </ul>
     // add bootstrap css
 ```
+- 如下
+
 ![图片介绍](https://raw.githubusercontent.com/8696/node-pagination-template/master/1.jpg)
 
 
-        other options
+   
         
 ```javascript
+    // *** 002
+    
     let text2 = paginationTemplate({
         dataTotal: 20,               // 数据总条数
         perPage: 1,                  // 每页显示条数
@@ -80,6 +85,8 @@
     </ul>
     // add bootstrap css
 ```
+- 如下
+
 ![图片介绍](https://raw.githubusercontent.com/8696/node-pagination-template/master/2.jpg)
 
 
