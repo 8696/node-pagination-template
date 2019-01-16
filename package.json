@@ -1,7 +1,7 @@
 {
   "name": "node-pagination-template",
-  "version": "1.0.4",
-  "description": "Pagination template for node.js",
+  "version": "1.0.5",
+  "description": "nodejs应用中通用html分页模版生成器",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
