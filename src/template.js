@@ -48,7 +48,7 @@ module.exports = function (options) {
             data.currentPage = Number.parseInt(options.currentPage);
 
 
-            console.log(`总页数${data.last_page}  当前页${data.currentPage}`);
+            // console.log(`总页数${data.last_page}  当前页${data.currentPage}`);
         },
         compute = function () {
 
